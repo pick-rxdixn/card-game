@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://b27cearab64vl"]
+
+[ext_resource type="Script" uid="uid://b5hqyrsou0kjg" path="res://Resources/CardData.gd" id="1_i5tyd"]
+
+[resource]
+script = ExtResource("1_i5tyd")
+card_name = "Эпическая карта"
+description = "Еще лучше чел"
+power = 4
+cost = 5
+health = 8
+rarity = "Epic"
+metadata/_custom_type_script = "uid://b5hqyrsou0kjg"

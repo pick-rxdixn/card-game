@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bgih0ehq2peli"]
+
+[ext_resource type="Script" uid="uid://cnmnjjt73r3xu" path="res://scripts/booster_pack.gd" id="1_2iumy"]
+[ext_resource type="Script" uid="uid://b5hqyrsou0kjg" path="res://Resources/CardData.gd" id="2_ey564"]
+[ext_resource type="Resource" uid="uid://cq84smx0oqm7b" path="res://Card/Card_common.tres" id="3_kyiuy"]
+[ext_resource type="Resource" uid="uid://b27cearab64vl" path="res://Card/Card_epic.tres" id="4_5io7c"]
+[ext_resource type="Resource" uid="uid://dbqb3gbtfpxvw" path="res://Card/Card_legendary.tres" id="5_fsdnp"]
+[ext_resource type="Resource" uid="uid://da5sximmlsvvb" path="res://Card/Card_rare.tres" id="6_k033s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2iumy"]
+size = Vector2(355, 487)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f3u63"]
+
+[node name="Node2D" type="Node2D" unique_id=1079650205]
+script = ExtResource("1_2iumy")
+all_cards = Array[ExtResource("2_ey564")]([ExtResource("3_kyiuy"), ExtResource("4_5io7c"), ExtResource("5_fsdnp"), ExtResource("6_k033s")])
+
+[node name="Area2D" type="Area2D" parent="." unique_id=994912045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1845234115]
+position = Vector2(179.5, 246.5)
+shape = SubResource("RectangleShape2D_2iumy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1840180256]
+offset_right = 357.0
+offset_bottom = 484.0
+mouse_filter = 2
+texture = SubResource("CanvasTexture_f3u63")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1457295568]
+layout_mode = 0
+offset_right = 357.0
+offset_bottom = 491.0
+mouse_filter = 2
+color = Color(0.09923177, 0.09923177, 0.09923177, 1)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

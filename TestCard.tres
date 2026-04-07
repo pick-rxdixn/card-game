@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_jn4vy")
-card_name = "Крыса"
-description = "Просто крыса"
-cost = 2
-health = 3
+card_name = "Годотды"
+description = "Годотит в начале раунда"
+power = 5
+cost = 10
+health = 8
 metadata/_custom_type_script = "uid://b5hqyrsou0kjg"
