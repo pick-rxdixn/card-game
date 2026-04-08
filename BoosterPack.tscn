@@ -8,29 +8,33 @@
 [ext_resource type="Resource" uid="uid://da5sximmlsvvb" path="res://Card/Card_rare.tres" id="6_k033s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iumy"]
-size = Vector2(355, 487)
+size = Vector2(309, 487)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f3u63"]
 
 [node name="Node2D" type="Node2D" unique_id=1079650205]
+position = Vector2(566, 317)
 script = ExtResource("1_2iumy")
 all_cards = Array[ExtResource("2_ey564")]([ExtResource("3_kyiuy"), ExtResource("4_5io7c"), ExtResource("5_fsdnp"), ExtResource("6_k033s")])
 
 [node name="Area2D" type="Area2D" parent="." unique_id=994912045]
+position = Vector2(-151, -247)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1845234115]
-position = Vector2(179.5, 246.5)
+position = Vector2(156.5, 246.5)
 shape = SubResource("RectangleShape2D_2iumy")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1840180256]
-offset_right = 357.0
-offset_bottom = 484.0
+offset_left = -158.0
+offset_top = -245.0
+offset_right = 161.0
+offset_bottom = 243.0
 mouse_filter = 2
 texture = SubResource("CanvasTexture_f3u63")
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1457295568]
 layout_mode = 0
-offset_right = 357.0
+offset_right = 320.0
 offset_bottom = 491.0
 mouse_filter = 2
 color = Color(0.09923177, 0.09923177, 0.09923177, 1)

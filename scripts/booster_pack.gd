@@ -1,6 +1,15 @@
 extends Node2D
 
 @export var all_cards: Array[CardData]
+@export var target_marker: Marker2D
+
+var is_in_center = false
+var start_position: Vector2
+var start_scale: Vector2
+
+func _ready():
+	start_position = global_position
+	start_scale = scale
 
 var rarity_weights = {
 	"Common": 60,
@@ -12,10 +21,33 @@ var rarity_weights = {
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("Пакет нажат!")
-			open_booster()
+			if not is_in_center:
+				move_to_center()
+			else:
+				open_booster()
 
-func open_booster(amount: int = 1) -> Array[CardData]:
+func _input(event):
+	if event.is_action_pressed("ui_cancel") and is_in_center:
+		return_to_start()
+
+func return_to_start():
+	is_in_center = false
+	
+	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(self, "global_position", start_position, 0.4)
+	tween.parallel().tween_property(self, "scale", start_scale, 0.4)
+
+func move_to_center():
+	is_in_center = true
+	var screen_center = target_marker.global_position
+	
+	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(self, "global_position", screen_center, 0.4)
+	tween.parallel().tween_property(self, "scale", Vector2(1, 1), 0.4)
+
+func open_booster(amount: int = 4) -> Array[CardData]:
 	var pulled_cards: Array[CardData] = []
 	
 	for i in range(amount):

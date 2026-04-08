@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bao6qsv2rq2x1"]
 
 [ext_resource type="Script" uid="uid://d4ervksj2g52" path="res://scripts/card.gd" id="1_dd2wi"]
-[ext_resource type="Resource" uid="uid://bdacrsfgyx340" path="res://TestCard.tres" id="2_hael8"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_u4fkt"]
 
@@ -26,7 +25,6 @@ anchors_preset = 0
 offset_right = 236.0
 offset_bottom = 354.5
 script = ExtResource("1_dd2wi")
-card_data = ExtResource("2_hael8")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1759696628]
 layout_mode = 0

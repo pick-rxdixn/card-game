@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="CardGame"
-run/main_scene="uid://bao6qsv2rq2x1"
+run/main_scene="uid://3ywms6g5ibd8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [physics]
 

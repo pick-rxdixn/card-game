@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_pc6o2")
-card_name = "Легендарная карта"
+card_name = "Легенда"
 description = "Вообще самый крутой чел"
 power = 10
 cost = 7
