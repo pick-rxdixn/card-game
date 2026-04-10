@@ -2,14 +2,13 @@ extends Node2D
 
 @export var all_cards: Array[CardData]
 @export var target_marker: Marker2D
+@export var card_scene: PackedScene
 
 var is_in_center = false
 var start_position: Vector2
 var start_scale: Vector2
 
-func _ready():
-	start_position = global_position
-	start_scale = scale
+var rarity_pools = {"Common": [], "Rare": [], "Epic": [], "Legendary": []}
 
 var rarity_weights = {
 	"Common": 60,
@@ -17,6 +16,14 @@ var rarity_weights = {
 	"Epic": 10,
 	"Legendary": 5
 }
+
+func _ready():
+	start_position = global_position
+	start_scale = scale
+	for card in all_cards:
+		if card.rarity in rarity_pools:
+			rarity_pools[card.rarity].append(card)
+
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -48,34 +55,34 @@ func move_to_center():
 	tween.parallel().tween_property(self, "scale", Vector2(1, 1), 0.4)
 
 func open_booster(amount: int = 4) -> Array[CardData]:
+	return_to_start()
+	var draft_zone = %DraftZone
+	draft_zone.visible = true
+	
 	var pulled_cards: Array[CardData] = []
 	
 	for i in range(amount):
 		var card = _get_random_card()
 		pulled_cards.append(card)
 		print("Выпала карта: ", card.card_name, " [", card.rarity, "]")
+	
+	for data in pulled_cards:
+		var new_card = card_scene.instantiate()
+		draft_zone.add_child(new_card)
+		new_card.setup_choice_mode(data)
+		new_card.position = Vector2.ZERO - (new_card.size / 2)
 		
 	return pulled_cards
 
 func _get_random_card() -> CardData:
-	var roll = randf_range(0, 100)
-	var selected_rarity = "Common"
+	var roll = randf() * 100.0
+	var cumulative = 0.0
 	
-	if roll < rarity_weights["Legendary"]:
-		selected_rarity = "Legendary"
-	elif roll < rarity_weights["Legendary"] + rarity_weights["Epic"]:
-		selected_rarity = "Epic"
-	elif roll < rarity_weights["Legendary"] + rarity_weights["Epic"] + rarity_weights["Rare"]:
-		selected_rarity = "Rare"
+	# Проходим по редкостям от редких к частым
+	for rarity in ["Legendary", "Epic", "Rare", "Common"]:
+		cumulative += rarity_weights[rarity]
+		if roll <= cumulative:
+			if not rarity_pools[rarity].is_empty():
+				return rarity_pools[rarity].pick_random()
 	
-	var pool = all_cards.filter(func(c): return c.rarity == selected_rarity)
-	
-	if pool.is_empty():
-		print("Предупреждение: Карт редкости ", selected_rarity, " не найдено в списке!")
-		pool = all_cards.filter(func(c): return c.rarity == "Common")
-		
-	if pool.is_empty():
-		push_error("ОШИБКА: Массив all_cards пуст или в нем нет карт с редкостью Common!")
-		return null
-	
-	return pool.pick_random()
+	return all_cards.pick_random() # Резервный вариант

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3ywms6g5ibd8"]
 
 [ext_resource type="PackedScene" uid="uid://bgih0ehq2peli" path="res://BoosterPack.tscn" id="1_mlf6e"]
+[ext_resource type="Script" uid="uid://cwmsthcrumbvf" path="res://scripts/hand_slot.gd" id="2_po0ka"]
 
 [node name="GameScene" type="Node2D" unique_id=281905335]
 
@@ -15,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BoosterPackSlot" type="Control" parent="CanvasLayer/Control" unique_id=1007316015]
+[node name="BoosterPackSlot" type="Control" parent="CanvasLayer/Control" unique_id=734391952]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -34,14 +35,35 @@ target_marker = NodePath("../CenterPoint")
 [node name="CenterPoint" type="Marker2D" parent="CanvasLayer/Control/BoosterPackSlot" unique_id=1507783463]
 position = Vector2(951, -319)
 
-[node name="HandSlot" type="Control" parent="CanvasLayer/Control" unique_id=1426932670]
+[node name="HandSlot" type="Control" parent="CanvasLayer/Control" unique_id=595221857]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -785.0
-offset_top = -225.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 498.0
+offset_top = 230.0
+offset_right = 639.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(370, 116)
+script = ExtResource("2_po0ka")
+
+[node name="DraftZone" type="Control" parent="CanvasLayer/Control" unique_id=1951074363]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -43.0
+offset_right = -6.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.241783, 1.2801939)
+mouse_filter = 2

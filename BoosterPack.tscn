@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b27cearab64vl" path="res://Card/Card_epic.tres" id="4_5io7c"]
 [ext_resource type="Resource" uid="uid://dbqb3gbtfpxvw" path="res://Card/Card_legendary.tres" id="5_fsdnp"]
 [ext_resource type="Resource" uid="uid://da5sximmlsvvb" path="res://Card/Card_rare.tres" id="6_k033s"]
+[ext_resource type="PackedScene" uid="uid://bao6qsv2rq2x1" path="res://Card.tscn" id="7_5io7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iumy"]
 size = Vector2(309, 487)
@@ -16,6 +17,7 @@ size = Vector2(309, 487)
 position = Vector2(566, 317)
 script = ExtResource("1_2iumy")
 all_cards = Array[ExtResource("2_ey564")]([ExtResource("3_kyiuy"), ExtResource("4_5io7c"), ExtResource("5_fsdnp"), ExtResource("6_k033s")])
+card_scene = ExtResource("7_5io7c")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=994912045]
 position = Vector2(-151, -247)
